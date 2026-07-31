@@ -73,15 +73,15 @@ const instrumentos = {
     desc:'Tubo aberto nas duas pontas; o ar é cortado na borda do bocal (embocadura livre).',
     curiosidades:['Sem palheta','Som cristalino'],
     imagem:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Flute_VL100.png/200px-Flute_VL100.png'},
-  flautim:{nome:'Flautim',familia:'madeiras',emoji:'🪗',faixa:'587–4186 Hz',freq:1400,
+  flautim:{nome:'Flautim',familia:'madeiras',emoji:'🪈',faixa:'587–4186 Hz',freq:1400,
     desc:'Flauta em miniatura — o instrumento mais agudo da orquestra.',
     curiosidades:['Tubo curtíssimo','Corta acima de toda a orquestra'],
     imagem:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Piccolo.jpg/200px-Piccolo.jpg'},
-  clarinete:{nome:'Clarinete',familia:'madeiras',emoji:'🪈',faixa:'165–1568 Hz',freq:500,
+  clarinete:{nome:'Clarinete',familia:'madeiras',emoji:'🎵',faixa:'165–1568 Hz',freq:500,
     desc:'Usa palheta simples: uma única lâmina vibra contra o bocal.',
     curiosidades:['Tubo fechado em uma ponta','Timbre quente e versátil'],
     imagem:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ClarinetMib.jpg/200px-ClarinetMib.jpg'},
-  fagote:{nome:'Fagote',familia:'madeiras',emoji:'🪈',faixa:'87–698 Hz',freq:250,
+  fagote:{nome:'Fagote',familia:'madeiras',emoji:'🎶',faixa:'87–698 Hz',freq:250,
     desc:'Palheta dupla e tubo comprido dobrado — o grave das madeiras.',
     curiosidades:['Maior instrumento de madeira','Palheta dupla'],
     imagem:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Fagott_VL100.png/200px-Fagott_VL100.png'},
@@ -121,6 +121,215 @@ const instrumentos = {
     desc:'O músico bate, sacode ou esfrega a membrana, fazendo vibrar tanto a pele quanto as platinelas metálicas ao redor.',
     curiosidades:['Combina membrana + platinelas (chocalho)','Mais comum na música popular, mas aparece em algumas obras orquestrais'],
     imagem:'https://commons.wikimedia.org/wiki/Special:FilePath/Pandeiro.svg'}
+};
+
+/* ---------- ÍCONES SVG CUSTOMIZADOS POR INSTRUMENTO ---------- */
+const instrumentIcons = {
+  // CORDAS
+  violino: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 4v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="30" y="16" width="4" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+    <path d="M22 22c0 0-2 6-2 12s2 12 2 12h20c0 0 2-6 2-12s-2-12-2-12H22z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <path d="M24 28c4-2 12-2 16 0" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+    <path d="M24 38c4 2 12 2 16 0" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+    <ellipse cx="32" cy="33" rx="3" ry="2" fill="currentColor" opacity="0.4"/>
+    <line x1="28" y1="22" x2="28" y2="46" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="32" y1="22" x2="32" y2="46" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="36" y1="22" x2="36" y2="46" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <path d="M24 46v8c0 2 3.5 4 8 4s8-2 8-4v-8" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+    <path d="M10 30l8 3M10 36l8-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  </svg>`,
+  viola: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 4v11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <rect x="29" y="15" width="6" height="5" rx="1" fill="currentColor" opacity="0.6"/>
+    <path d="M20 20c0 0-2 7-2 14s2 14 2 14h24c0 0 2-7 2-14s-2-14-2-14H20z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <path d="M22 27c5-2 15-2 20 0" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+    <path d="M22 41c5 2 15 2 20 0" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+    <ellipse cx="32" cy="34" rx="3.5" ry="2.5" fill="currentColor" opacity="0.4"/>
+    <line x1="27" y1="20" x2="27" y2="48" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="32" y1="20" x2="32" y2="48" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="37" y1="20" x2="37" y2="48" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <path d="M22 48v6c0 2 4.5 4 10 4s10-2 10-4v-6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+    <path d="M8 30l8 4M8 38l8-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  </svg>`,
+  violoncelo: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 2v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="29" y="10" width="6" height="5" rx="1" fill="currentColor" opacity="0.6"/>
+    <path d="M18 15c0 0-3 8-3 17s3 17 3 17h28c0 0 3-8 3-17s-3-17-3-17H18z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="4" ry="3" fill="currentColor" opacity="0.4"/>
+    <line x1="26" y1="15" x2="26" y2="49" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="32" y1="15" x2="32" y2="49" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="38" y1="15" x2="38" y2="49" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <path d="M20 49v6c0 2 5 4 12 4s12-2 12-4v-6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+    <line x1="32" y1="59" x2="32" y2="63" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>`,
+  contrabaixo: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 1v7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <rect x="28" y="8" width="8" height="5" rx="1.5" fill="currentColor" opacity="0.6"/>
+    <path d="M16 13c0 0-4 9-4 19s4 19 4 19h32c0 0 4-9 4-19s-4-19-4-19H16z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <ellipse cx="32" cy="32" rx="5" ry="3.5" fill="currentColor" opacity="0.4"/>
+    <line x1="24" y1="13" x2="24" y2="51" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <line x1="32" y1="13" x2="32" y2="51" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <line x1="40" y1="13" x2="40" y2="51" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <path d="M18 51v5c0 2 6 4 14 4s14-2 14-4v-5" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+    <line x1="32" y1="60" x2="32" y2="64" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </svg>`,
+  harpa: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 58V10c0-3 2-5 5-5h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M25 5c10 0 22 8 26 20s2 30-2 33" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M16 58h35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="20" y1="12" x2="20" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="24" y1="10" x2="24" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="28" y1="9" x2="28" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="32" y1="10" x2="32" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="36" y1="12" x2="36" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="40" y1="16" x2="40" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="44" y1="22" x2="44" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <line x1="48" y1="30" x2="48" y2="56" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="16" cy="58" r="2" fill="currentColor" opacity="0.4"/>
+  </svg>`,
+  piano: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6" y="18" width="52" height="30" rx="2" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+    <line x1="14" y1="18" x2="14" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <line x1="22" y1="18" x2="22" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <line x1="30" y1="18" x2="30" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <line x1="38" y1="18" x2="38" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <line x1="46" y1="18" x2="46" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <line x1="54" y1="18" x2="54" y2="48" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <rect x="11" y="18" width="4" height="18" rx="0.5" fill="currentColor" opacity="0.5"/>
+    <rect x="19" y="18" width="4" height="18" rx="0.5" fill="currentColor" opacity="0.5"/>
+    <rect x="33" y="18" width="4" height="18" rx="0.5" fill="currentColor" opacity="0.5"/>
+    <rect x="41" y="18" width="4" height="18" rx="0.5" fill="currentColor" opacity="0.5"/>
+    <rect x="49" y="18" width="4" height="18" rx="0.5" fill="currentColor" opacity="0.5"/>
+    <path d="M6 48h52v4H6z" fill="currentColor" opacity="0.15"/>
+    <path d="M20 10c4-2 8-2 12 0v8H20v-8z" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="1.5"/>
+  </svg>`,
+  // MADEIRAS
+  flauta: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="28" width="48" height="8" rx="4" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <circle cx="18" cy="32" r="2" fill="currentColor" opacity="0.6"/>
+    <circle cx="26" cy="32" r="2" fill="currentColor" opacity="0.6"/>
+    <circle cx="34" cy="32" r="2" fill="currentColor" opacity="0.6"/>
+    <circle cx="42" cy="32" r="2" fill="currentColor" opacity="0.6"/>
+    <circle cx="50" cy="32" r="2" fill="currentColor" opacity="0.6"/>
+    <ellipse cx="10" cy="32" rx="2" ry="3" fill="currentColor" opacity="0.3"/>
+    <line x1="14" y1="28" x2="14" y2="36" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+  </svg>`,
+  flautim: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="12" y="30" width="40" height="6" rx="3" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <circle cx="22" cy="33" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="30" cy="33" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="38" cy="33" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="46" cy="33" r="1.5" fill="currentColor" opacity="0.6"/>
+    <ellipse cx="14" cy="33" rx="1.5" ry="2.5" fill="currentColor" opacity="0.3"/>
+    <path d="M8 25l4 5M8 41l4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  </svg>`,
+  clarinete: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 6c0 0-1 2-1 4v40c0 2 2 6 5 8s5-1 5-3V10c0-2-1-4-1-4h-8z" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <circle cx="32" cy="18" r="1.8" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="26" r="1.8" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="34" r="1.8" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="42" r="1.8" fill="currentColor" opacity="0.6"/>
+    <rect x="29" y="6" width="6" height="4" rx="1" fill="currentColor" opacity="0.4"/>
+    <path d="M30 50c0 2 1 4 2 6s2-1 2-3" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <ellipse cx="32" cy="56" rx="5" ry="3" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+  </svg>`,
+  fagote: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 8v44c0 2 2 6 4 6h8c2 0 4-4 4-6V8" stroke="currentColor" stroke-width="2.5" fill="currentColor" opacity="0.12"/>
+    <path d="M28 8h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="32" cy="18" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="26" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="34" r="1.5" fill="currentColor" opacity="0.6"/>
+    <circle cx="32" cy="42" r="1.5" fill="currentColor" opacity="0.6"/>
+    <path d="M26 10c-2 0-4 1-4 3v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M38 10c2 0 4 1 4 3v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+    <ellipse cx="32" cy="56" rx="8" ry="3" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.5"/>
+  </svg>`,
+  // METAIS
+  trompete: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 30h28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M36 24c0 0 8 0 12 4s8 12 8 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="currentColor" opacity="0.1"/>
+    <path d="M36 36l20 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="18" cy="26" r="2" fill="currentColor" opacity="0.5"/>
+    <circle cx="24" cy="26" r="2" fill="currentColor" opacity="0.5"/>
+    <circle cx="30" cy="26" r="2" fill="currentColor" opacity="0.5"/>
+    <path d="M8 30c-1 0-2 1-2 2s1 2 2 2" stroke="currentColor" stroke-width="2" fill="currentColor" opacity="0.3"/>
+  </svg>`,
+  trompa: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 16c0 0-8 4-8 16s8 16 8 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="currentColor" opacity="0.1"/>
+    <path d="M20 16c8-4 20-2 24 6s4 18-4 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="28" cy="32" rx="10" ry="12" fill="currentColor" opacity="0.08" stroke="currentColor" stroke-width="2"/>
+    <circle cx="28" cy="32" r="4" fill="currentColor" opacity="0.2"/>
+    <path d="M40 24c4 0 8 2 10 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="16" cy="20" r="1.5" fill="currentColor" opacity="0.5"/>
+    <circle cx="16" cy="26" r="1.5" fill="currentColor" opacity="0.5"/>
+    <circle cx="16" cy="32" r="1.5" fill="currentColor" opacity="0.5"/>
+  </svg>`,
+  trombone: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 20h36v24H8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="currentColor" opacity="0.1"/>
+    <path d="M44 20c6 0 10 4 10 12s-4 12-10 12" stroke="currentColor" stroke-width="2.5" fill="currentColor" opacity="0.1"/>
+    <line x1="8" y1="24" x2="38" y2="24" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+    <line x1="8" y1="40" x2="38" y2="40" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+    <path d="M14 20v-4M20 20v-4M26 20v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <ellipse cx="52" cy="32" rx="4" ry="8" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+  </svg>`,
+  tuba: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="32" cy="32" rx="18" ry="22" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2.5"/>
+    <ellipse cx="32" cy="32" rx="10" ry="14" fill="currentColor" opacity="0.08" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="32" cy="32" r="5" fill="currentColor" opacity="0.15"/>
+    <circle cx="24" cy="18" r="2" fill="currentColor" opacity="0.5"/>
+    <circle cx="32" cy="14" r="2" fill="currentColor" opacity="0.5"/>
+    <circle cx="40" cy="18" r="2" fill="currentColor" opacity="0.5"/>
+    <path d="M14 44c-4 2-6 6-4 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M50 44c4 2 6 6 4 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>`,
+  // PERCUSSÃO
+  timpanos: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="32" cy="20" rx="20" ry="8" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <path d="M12 20v16c0 4 9 8 20 8s20-4 20-8V20" stroke="currentColor" stroke-width="2" fill="currentColor" opacity="0.1"/>
+    <ellipse cx="32" cy="36" rx="20" ry="4" fill="currentColor" opacity="0.08" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+    <path d="M16 18l-6 6M48 18l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="10" cy="24" r="2" fill="currentColor" opacity="0.4"/>
+    <circle cx="54" cy="24" r="2" fill="currentColor" opacity="0.4"/>
+    <path d="M12 44v4M52 44v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  </svg>`,
+  caixa: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="32" cy="18" rx="20" ry="8" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
+    <path d="M12 18v24c0 4 9 8 20 8s20-4 20-8V18" stroke="currentColor" stroke-width="2" fill="currentColor" opacity="0.1"/>
+    <line x1="14" y1="34" x2="50" y2="34" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="14" y1="37" x2="50" y2="37" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <line x1="14" y1="40" x2="50" y2="40" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+    <path d="M20 14l-4 8M44 14l4 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <circle cx="16" cy="22" r="2" fill="currentColor" opacity="0.4"/>
+    <circle cx="48" cy="22" r="2" fill="currentColor" opacity="0.4"/>
+  </svg>`,
+  pratos: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="24" cy="28" rx="18" ry="6" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2" transform="rotate(-15 24 28)"/>
+    <ellipse cx="40" cy="36" rx="18" ry="6" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2" transform="rotate(15 40 36)"/>
+    <circle cx="24" cy="28" r="3" fill="currentColor" opacity="0.3"/>
+    <circle cx="40" cy="36" r="3" fill="currentColor" opacity="0.3"/>
+    <path d="M20 18l-4 4M44 46l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M10 30c-2 0-3 1-3 2M54 34c2 0 3 1 3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  </svg>`,
+  bombo: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="32" cy="16" rx="22" ry="8" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M10 16v28c0 4 10 8 22 8s22-4 22-8V16" stroke="currentColor" stroke-width="2.5" fill="currentColor" opacity="0.1"/>
+    <ellipse cx="32" cy="44" rx="22" ry="6" fill="currentColor" opacity="0.08" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+    <line x1="32" y1="8" x2="32" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    <circle cx="32" cy="8" r="3" fill="currentColor" opacity="0.3"/>
+    <path d="M16 22v16M48 22v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  </svg>`,
+  pandeiro: `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="20" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2.5"/>
+    <circle cx="32" cy="32" r="14" fill="currentColor" opacity="0.06" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+    <circle cx="18" cy="20" r="2.5" fill="currentColor" opacity="0.4"/>
+    <circle cx="46" cy="20" r="2.5" fill="currentColor" opacity="0.4"/>
+    <circle cx="18" cy="44" r="2.5" fill="currentColor" opacity="0.4"/>
+    <circle cx="46" cy="44" r="2.5" fill="currentColor" opacity="0.4"/>
+    <circle cx="12" cy="32" r="2.5" fill="currentColor" opacity="0.4"/>
+    <circle cx="52" cy="32" r="2.5" fill="currentColor" opacity="0.4"/>
+    <path d="M24 18l-2 4M40 18l2 4M24 46l-2-4M40 46l2-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  </svg>`
 };
 
 /* ---------- NAVBAR ---------- */
@@ -383,10 +592,23 @@ function buildInstrumentsSvg(){
     circle.setAttribute('cx', p.x); circle.setAttribute('cy', p.y); circle.setAttribute('r', 7);
     circle.setAttribute('fill', 'rgba(201,160,78,0.85)');
     g.appendChild(circle);
-    const text = document.createElementNS(ns,'text');
-    text.setAttribute('x', p.x); text.setAttribute('y', p.y - 14);
-    text.textContent = inst.emoji;
-    g.appendChild(text);
+    // Usar SVG icon se disponível, senão emoji
+    if(instrumentIcons[p.id]) {
+      const iconGroup = document.createElementNS(ns,'foreignObject');
+      iconGroup.setAttribute('x', p.x - 12); iconGroup.setAttribute('y', p.y - 26);
+      iconGroup.setAttribute('width', 24); iconGroup.setAttribute('height', 24);
+      const div = document.createElement('div');
+      div.setAttribute('xmlns','http://www.w3.org/1999/xhtml');
+      div.className = 'inst-icon-mini';
+      div.innerHTML = instrumentIcons[p.id];
+      iconGroup.appendChild(div);
+      g.appendChild(iconGroup);
+    } else {
+      const text = document.createElementNS(ns,'text');
+      text.setAttribute('x', p.x); text.setAttribute('y', p.y - 14);
+      text.textContent = inst.emoji;
+      g.appendChild(text);
+    }
     g.addEventListener('click', ()=> openInstrumentModal(p.id));
     g.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); openInstrumentModal(p.id); }});
     g.addEventListener('mouseenter', ()=> document.getElementById('stageHint').textContent = `Clique para explorar ${displayName}`);
@@ -421,9 +643,13 @@ function openMaestroModal(){
 function openInstrumentModal(id){
   const inst = instrumentos[id];
   if(!inst) return;
+  const iconHtml = instrumentIcons[id] 
+    ? `<div class="modal-icon-svg">${instrumentIcons[id]}</div>`
+    : '';
   openModal(`
     <span class="m-tag">${inst.familia}</span>
     <h3>${inst.nome}</h3>
+    ${iconHtml}
     <img src="${inst.imagem}" alt="${inst.nome}">
     <p>${inst.desc}</p>
     <ul>${inst.curiosidades.map(c=>`<li>${c}</li>`).join('')}</ul>
@@ -693,7 +919,10 @@ function openInstrumentModal(id){
     const inst = instrumentos[id];
     const div = document.createElement('div');
     div.className = 'perc-item';
-    div.innerHTML = `<span class="perc-emoji">${inst.emoji}</span><h4>${inst.nome}</h4><p>${inst.faixa}</p>`;
+    const iconHtml = instrumentIcons[id] 
+      ? `<span class="perc-icon-svg">${instrumentIcons[id]}</span>`
+      : `<span class="perc-emoji">${inst.emoji}</span>`;
+    div.innerHTML = `${iconHtml}<h4>${inst.nome}</h4><p>${inst.faixa}</p>`;
     div.addEventListener('click', ()=>{
       div.classList.add('hit');
       setTimeout(()=> div.classList.remove('hit'), 200);
@@ -721,7 +950,14 @@ function openInstrumentModal(id){
   let currentFreq = 150;
   function update(){
     const inst = instrumentos[order[slider.value]];
-    emojiEl.textContent = inst.emoji;
+    const key = order[slider.value];
+    if(instrumentIcons[key]) {
+      emojiEl.innerHTML = instrumentIcons[key];
+      emojiEl.className = 'freq-icon-svg';
+    } else {
+      emojiEl.textContent = inst.emoji;
+      emojiEl.className = 'freq-emoji';
+    }
     nameEl.textContent = inst.nome;
     hzEl.textContent = inst.faixa;
     descEl.textContent = inst.desc;

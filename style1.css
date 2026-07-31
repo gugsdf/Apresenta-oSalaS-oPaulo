@@ -222,7 +222,10 @@ button:focus-visible,
 }
 .perc-item:hover{transform:translateY(-4px);border-color:var(--gold);}
 .perc-item .perc-emoji{font-size:2.4rem;margin-bottom:0.6rem;display:block;transition:transform 0.15s;}
+.perc-item .perc-icon-svg{display:block;width:64px;height:64px;margin-bottom:0.6rem;color:var(--gold);transition:transform 0.15s;}
+.perc-item .perc-icon-svg svg{width:100%;height:100%;}
 .perc-item.hit .perc-emoji{transform:scale(1.3);}
+.perc-item.hit .perc-icon-svg{transform:scale(1.3);}
 .perc-item h4{font-family:var(--font-display);font-size:1rem;margin-bottom:0.3rem;}
 .perc-item p{font-size:0.68rem;color:var(--muted-dim);font-family:var(--font-mono);}
 
@@ -230,6 +233,8 @@ button:focus-visible,
 .freq-section{padding:7rem 2rem;background:var(--navy-1);text-align:center;}
 .freq-display{max-width:520px;margin:0 auto 2.5rem;}
 .freq-emoji{font-size:4rem;margin-bottom:0.5rem;}
+.freq-icon-svg{display:block;width:120px;height:120px;margin:0 auto 1rem;color:var(--gold);}
+.freq-icon-svg svg{width:100%;height:100%;}
 .freq-display h3{font-family:var(--font-display);font-size:1.8rem;margin-bottom:0.4rem;}
 .freq-hz{font-family:var(--font-mono);color:var(--gold);font-size:0.9rem;margin-bottom:1rem;}
 .freq-display canvas{width:100%;height:70px;display:block;margin-bottom:1rem;}
@@ -330,6 +335,10 @@ button:focus-visible,
   display:inline-block;font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);
   border:1px solid var(--border);border-radius:20px;padding:0.25rem 0.8rem;margin-bottom:1rem;text-transform:uppercase;
 }
+.modal-body .modal-icon-svg{display:block;width:80px;height:80px;margin:0.5rem auto 1rem;color:var(--gold);}
+.modal-body .modal-icon-svg svg{width:100%;height:100%;}
+.inst-icon-mini{width:24px;height:24px;color:var(--gold);}
+.inst-icon-mini svg{width:100%;height:100%;}
 .modal-body p{color:var(--muted);margin-bottom:0.9rem;font-size:0.92rem;}
 .modal-body img{width:100%;max-height:220px;object-fit:contain;background:var(--navy-1);border-radius:10px;margin-bottom:1.2rem;}
 .modal-body ul{list-style:none;margin-bottom:1.2rem;}
