@@ -78,8 +78,15 @@ button:focus-visible,
 .brand-mark{color:var(--gold);font-size:1.5rem;line-height:1;}
 .brand em{color:var(--gold);font-style:italic;font-weight:400;}
 #navMenu{list-style:none;display:flex;gap:1.9rem;align-items:center;}
-#navMenu a{font-size:0.82rem;color:var(--muted);letter-spacing:0.03em;transition:color 0.2s;}
+#navMenu a{font-size:0.82rem;color:var(--muted);letter-spacing:0.03em;transition:color 0.2s;position:relative;}
 #navMenu a:hover{color:var(--gold);}
+#navMenu a.active{color:var(--gold);}
+#navMenu a.active::after{
+  content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;
+  background:var(--gold);border-radius:2px;
+}
+.nav-cta.active{background:var(--gold);color:var(--navy,#0b1119) !important;}
+.nav-cta.active::after{display:none;}
 .nav-cta{
   border:1px solid var(--gold);border-radius:30px;padding:0.5rem 1.1rem !important;color:var(--gold) !important;
 }
@@ -252,6 +259,60 @@ button:focus-visible,
   padding:2.2rem;margin-bottom:1.6rem;
 }
 .math-block.golden{border-color:rgba(201,160,78,0.35);}
+.math-embed{
+  position:relative;width:100%;overflow:hidden;
+  border-radius:calc(var(--radius) - 6px);
+  border:1px solid var(--border);background:#000;
+}
+.math-embed iframe{
+  position:absolute;top:0;left:0;border:0;display:block;
+  transform-origin:0 0;
+}
+.tempo-visual{display:flex;align-items:center;gap:1.6rem;margin-top:1.2rem;flex-wrap:wrap;}
+.tempo-pulse{
+  width:26px;height:26px;border-radius:50%;background:var(--gold);
+  flex-shrink:0;animation:tempoBeat 1s ease-in-out infinite;
+  box-shadow:0 0 0 0 rgba(201,160,78,0.5);
+}
+@keyframes tempoBeat{
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(201,160,78,0.5);}
+  30%{transform:scale(1.35);box-shadow:0 0 0 10px rgba(201,160,78,0);}
+  100%{transform:scale(1);box-shadow:0 0 0 0 rgba(201,160,78,0);}
+}
+.tempo-table{border-collapse:collapse;font-size:0.85rem;color:var(--cream);flex:1;min-width:240px;}
+.tempo-table th,.tempo-table td{padding:0.4rem 0.9rem;text-align:left;border-bottom:1px solid var(--border);}
+.tempo-table th{color:var(--gold);font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;}
+
+.figuras-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:1.4rem;
+}
+.figura-card{
+  display:flex;flex-direction:column;align-items:center;gap:0.6rem;
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:calc(var(--radius) - 8px);padding:1rem 0.6rem;
+}
+.figura-card img{height:64px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));}
+.figura-card span{font-size:0.76rem;color:var(--cream);text-align:center;}
+.figura-card em{display:block;font-size:0.7rem;color:var(--muted);font-style:italic;margin-top:0.15rem;}
+@media (max-width:700px){.figuras-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:420px){.figuras-grid{grid-template-columns:repeat(2,1fr);}}
+
+.music-player{
+  display:flex;align-items:center;gap:1.1rem;margin-top:1.6rem;
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:calc(var(--radius) - 8px);padding:1rem 1.3rem;
+}
+.music-player-btn{
+  width:48px;height:48px;flex-shrink:0;border-radius:50%;border:1px solid var(--gold);
+  background:transparent;color:var(--gold);font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;
+}
+.music-player-btn:hover{background:var(--gold);color:#1a1305;}
+.music-player-info{flex:1;min-width:0;}
+.music-player-title{font-size:0.86rem;color:var(--cream);margin-bottom:0.45rem;}
+.music-player-bar{width:100%;height:4px;border-radius:2px;background:rgba(255,255,255,0.1);overflow:hidden;}
+.music-player-fill{height:100%;width:0%;background:var(--gold);}
+.music-player-time{font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);margin-top:0.35rem;}
 .math-label{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
 .math-formula{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--cream);margin-bottom:1rem;}
 .math-formula.small{font-size:1.3rem;}

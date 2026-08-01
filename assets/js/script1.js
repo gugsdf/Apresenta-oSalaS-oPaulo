@@ -349,6 +349,53 @@ navMenu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=>{
   navToggle.setAttribute('aria-expanded','false');
 }));
 
+/* ---------- NAVBAR: link ativo conforme a seção visível ---------- */
+(function(){
+  const links = Array.from(navMenu.querySelectorAll('a[href^="#"]'));
+  const targets = links
+    .map(a => ({ a, el: document.getElementById(a.getAttribute('href').slice(1)) }))
+    .filter(t => t.el);
+
+  function setActive(id){
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+  function clearActive(){
+    links.forEach(a => a.classList.remove('active'));
+  }
+
+  // Ponto de referência: um pouco abaixo do topo da viewport.
+  // Se nenhuma seção do menu cobrir esse ponto (ex.: ainda no hero, no topo do site),
+  // nenhum link fica marcado como ativo. Quando mais de uma seção cobre o ponto
+  // (ex.: "Tempo" e "Sala ao Vivo" ficam DENTRO de "Matemática"), vence a menor
+  // (mais específica), para não ficar preso no pai o tempo todo.
+  function update(){
+    const probe = window.innerHeight * 0.3;
+    let best = null;
+    for(const t of targets){
+      const rect = t.el.getBoundingClientRect();
+      if(rect.top <= probe && rect.bottom > probe){
+        const height = rect.bottom - rect.top;
+        if(!best || height < best.height){
+          best = { id: t.el.id, height };
+        }
+      }
+    }
+    if(best) setActive(best.id); else clearActive();
+  }
+
+  let ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(()=>{ update(); ticking = false; });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
+})();
+
 /* ---------- HERO BUTTONS ---------- */
 document.getElementById('btnEntrar').addEventListener('click', ()=>{
   ctx();

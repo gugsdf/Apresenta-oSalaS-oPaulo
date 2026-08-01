@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Orquestra Interativa · Sala São Paulo</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style1.css" />
+<link rel="stylesheet" href="assets/css/style1.css" />
+<link rel="icon" type="image/png" href="assets/images/icon.png">
 </head>
 <body>
 
@@ -24,6 +25,8 @@
     <li><a href="#metais">Metais</a></li>
     <li><a href="#frequencia">Frequência</a></li>
     <li><a href="#matematica">Matemática</a></li>
+    <li><a href="#tempo-musical">Tempo</a></li>
+    <li><a href="#sala-ao-vivo">Sala ao Vivo</a></li>
     <li><a href="#instrumentos">Instrumentos</a></li>
     <li><a href="#quiz" class="nav-cta">Quiz</a></li>
   </ul>
@@ -208,47 +211,161 @@
   <div class="section-heading">
     <p class="beat-kicker">🎤 Igor · 10 — Por trás da nota</p>
     <h2>A Matemática da Música</h2>
+    <p class="beat-p">Nenhum instrumento é feito no olho. Por trás de cada corda, tubo e caixa acústica existe uma conta que decide onde furar, cortar ou esticar. A seguir, quatro aplicações matemáticas reais usadas na construção dos instrumentos.</p>
   </div>
 
   <div class="math-block">
-    <div class="math-label">Lei de Mersenne</div>
+    <div class="math-label">Lei de Mersenne — Construção de Cordas</div>
     <div class="math-formula">f = <span class="frac"><span>1</span><b>2L</b></span> · √<span class="rt">T/μ</span></div>
-    <p class="math-note">Já explorada na seção de cordas acima — aqui está a versão de referência, com a onda resultante desenhada ao vivo.</p>
+    <p class="math-note">É essa equação que o luthier usa para decidir o comprimento das cordas de um violino, violão ou piano, e a fábrica de cordas usa para escolher a espessura (μ) e a tensão (T) de cada fio de metal ou náilon. Mudar qualquer uma das três variáveis muda a nota — por isso instrumentos de tamanhos diferentes soam em oitavas diferentes.</p>
     <canvas id="mersenneRefCanvas"></canvas>
   </div>
 
   <div class="math-block">
-    <div class="math-label">Escala Temperada</div>
+    <div class="math-label">Escala Temperada — Posição dos Trastes e Teclas</div>
     <div class="math-formula">f<sub>n</sub> = f<sub>0</sub> · 2<sup>n/12</sup></div>
+    <p class="math-note">Essa progressão geométrica de razão 12√2 é o que define, com precisão milimétrica, onde o fabricante posiciona cada traste de um violão ou cada tecla de um piano, garantindo que os 12 semitons dividam a oitava em partes matematicamente iguais.</p>
     <div class="piano-row" id="mathPiano"></div>
   </div>
 
   <div class="math-block">
-    <div class="math-label">Tubos de Sopro</div>
+    <div class="math-label">Tubos de Sopro — Comprimento do Instrumento</div>
     <div class="math-formula-pair">
       <div><span class="math-formula small">f = v / 2L</span><p>Tubo aberto (flauta)</p></div>
       <div><span class="math-formula small">f = v / 4L</span><p>Tubo fechado (clarinete)</p></div>
     </div>
+    <p class="math-note">É essa razão entre velocidade do som e comprimento que determina o tamanho físico de cada sopro: por isso a tuba é enorme e grave, e o flautim é curto e agudo — o fabricante calcula L antes de dobrar um milímetro de metal.</p>
     <label>Comprimento do tubo<input type="range" id="mathTubeL" min="10" max="200" value="50"></label>
     <div class="lab-readout">Aberto: <strong id="mathTubeOpen">—</strong> Hz &nbsp;·&nbsp; Fechado: <strong id="mathTubeClosed">—</strong> Hz</div>
   </div>
 
-  <div class="math-block golden">
-    <div class="math-label">Geometria do Violino</div>
-    <div class="math-formula">φ = <span class="frac"><span>1 + √5</span><b>2</b></span> ≈ 1.618</div>
-    <div class="golden-row">
-      <svg viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg" class="golden-violin">
-        <ellipse cx="150" cy="320" rx="80" ry="100" fill="none" stroke="var(--gold)" stroke-width="2"/>
-        <ellipse cx="150" cy="180" rx="65" ry="80" fill="none" stroke="var(--gold)" stroke-width="2"/>
-        <rect x="143" y="50" width="14" height="140" rx="4" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
-        <ellipse cx="150" cy="50" rx="20" ry="15" fill="none" stroke="var(--gold)" stroke-width="2"/>
-        <rect x="70" y="160" width="160" height="260" fill="none" stroke="var(--gold-light)" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
-        <rect x="70" y="258" width="99" height="162" fill="none" stroke="var(--gold-light)" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/>
-      </svg>
-      <p>Os luthiers Stradivari usavam, de forma intuitiva, proporções próximas de φ ≈ 1.618 no corpo do violino — a mesma razão encontrada em conchas e galáxias.</p>
+  <div id="tempo-musical">
+    <div class="math-block">
+      <div class="math-label">Tempo e Ritmo — Fração do Tempo Musical</div>
+      <div class="math-formula">T = <span class="frac"><span>60</span><b>BPM</b></span></div>
+      <p class="math-note">O tempo de uma música também é matemática pura: o BPM (batidas por minuto) define quantos segundos dura cada batida, e as figuras musicais dividem essa batida em frações — mínima (1/2), semínima (1/4), colcheia (1/8), semicolcheia (1/16). É essa divisão que o metrônomo do luthier e do músico usam para afinar o instrumento no compasso certo.</p>
+      <label>Andamento<input type="range" id="tempoBpm" min="40" max="208" value="120"></label>
+      <div class="lab-readout">BPM: <strong id="tempoBpmVal">120</strong> &nbsp;·&nbsp; Segundos por batida: <strong id="tempoBeatSec">—</strong> s</div>
+      <div class="tempo-visual">
+        <div class="tempo-pulse" id="tempoPulse"></div>
+        <table class="tempo-table" id="tempoTable">
+          <thead><tr><th>Figura</th><th>Fração</th><th>Duração</th></tr></thead>
+          <tbody>
+            <tr><td>Mínima</td><td>1/2</td><td data-frac="0.5">—</td></tr>
+            <tr><td>Semínima</td><td>1/4</td><td data-frac="0.25">—</td></tr>
+            <tr><td>Colcheia</td><td>1/8</td><td data-frac="0.125">—</td></tr>
+            <tr><td>Semicolcheia</td><td>1/16</td><td data-frac="0.0625">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="math-block">
+      <div class="math-label">Figuras de Tempo — Frações em Notação</div>
+      <p class="math-note">Cada figura musical representa uma fração da mesma unidade de tempo. Juntas, elas formam a base matemática de qualquer partitura — e é a mesma matemática das batidas que você viu no bloco acima.</p>
+      <div class="figuras-grid">
+        <div class="figura-card"><img src="assets/images/tempo1.png" alt="Semibreve"><span>Figura<em>1</em></span></div>
+        <div class="figura-card"><img src="assets/images/tempo2.png" alt="Mínima"><span>Figura<em>2</em></span></div>
+        <div class="figura-card"><img src="assets/images/tempo3.png" alt="Semínima"><span>Figura<em>3</em></span></div>
+        <div class="figura-card"><img src="assets/images/tempo4.png" alt="Colcheia"><span>Figura<em>4</em></span></div>
+        <div class="figura-card"><img src="assets/images/tempo5.png" alt="Semicolcheia"><span>Figura<em>5</em></span></div>
+        <div class="figura-card"><img src="assets/images/tempo6.png" alt="Fusa"><span>Figura<em>6</em></span></div>
+      </div>
+      <div class="music-player">
+        <button class="music-player-btn" id="musicPlayBtn" aria-label="Tocar música">▶</button>
+        <div class="music-player-info">
+          <div class="music-player-title">Ouça essas figuras em uma música de verdade</div>
+          <div class="music-player-bar"><div class="music-player-fill" id="musicFill"></div></div>
+          <div class="music-player-time"><span id="musicTime">0:00</span> / <span id="musicDuration">0:00</span></div>
+        </div>
+        <audio id="musicAudio" src="assets/audio/musica.mp3" preload="metadata"></audio>
+      </div>
     </div>
   </div>
+
+  <div class="math-block" id="sala-ao-vivo">
+    <div class="math-label">Veja na prática · Sala Musical</div>
+    <p class="math-note">Toda essa matemática constrói os mesmos instrumentos que você toca aqui embaixo. Interaja com a sala ao vivo — o botão "Trocar de sala" dentro da tela leva até a segunda sala.</p>
+    <div class="math-embed" id="salaEmbedWrap">
+      <iframe src="sala1.html" title="Sala Musical interativa" loading="lazy" id="salaEmbedFrame"></iframe>
+    </div>
+    <p class="math-note" style="margin-top:2.8rem;text-align:center;">
+      <a class="btn-line" href="sala1.html" target="_blank" rel="noopener">Abrir Sala 1 em tela cheia ↗</a>
+      &nbsp;&nbsp;
+      <a class="btn-line" href="sala2.html" target="_blank" rel="noopener">Abrir Sala 2 em tela cheia ↗</a>
+    </p>
+  </div>
 </section>
+
+<script>
+/* ── Igor · Tempo/BPM ── */
+(function(){
+  const slider = document.getElementById('tempoBpm');
+  const bpmVal = document.getElementById('tempoBpmVal');
+  const beatSec = document.getElementById('tempoBeatSec');
+  const pulse = document.getElementById('tempoPulse');
+  const cells = document.querySelectorAll('#tempoTable td[data-frac]');
+
+  function update(){
+    const bpm = parseInt(slider.value, 10);
+    const secPerBeat = 60 / bpm;
+    bpmVal.textContent = bpm;
+    beatSec.textContent = secPerBeat.toFixed(2);
+    pulse.style.animationDuration = secPerBeat + 's';
+    cells.forEach(td => {
+      const frac = parseFloat(td.dataset.frac);
+      td.textContent = (secPerBeat * 4 * frac).toFixed(2) + ' s';
+    });
+  }
+  slider.addEventListener('input', update);
+  update();
+})();
+
+/* ── Igor · Player da música (mp3) ── */
+(function(){
+  const btn = document.getElementById('musicPlayBtn');
+  const audio = document.getElementById('musicAudio');
+  const fill = document.getElementById('musicFill');
+  const timeEl = document.getElementById('musicTime');
+  const durEl = document.getElementById('musicDuration');
+
+  function fmt(s){
+    if(!isFinite(s)) return '0:00';
+    const m = Math.floor(s/60), sec = Math.floor(s%60);
+    return m + ':' + String(sec).padStart(2,'0');
+  }
+
+  audio.addEventListener('loadedmetadata', ()=> durEl.textContent = fmt(audio.duration));
+  audio.addEventListener('timeupdate', ()=>{
+    timeEl.textContent = fmt(audio.currentTime);
+    fill.style.width = (audio.currentTime/audio.duration*100 || 0) + '%';
+  });
+  audio.addEventListener('ended', ()=>{ btn.textContent = '▶'; fill.style.width = '0%'; });
+
+  btn.addEventListener('click', ()=>{
+    if(audio.paused){ audio.play(); btn.textContent = '❚❚'; }
+    else{ audio.pause(); btn.textContent = '▶'; }
+  });
+})();
+
+/* ── Igor · Escala responsiva da Sala ao Vivo (evita corte de elementos) ── */
+(function(){
+  const wrap = document.getElementById('salaEmbedWrap');
+  const frame = document.getElementById('salaEmbedFrame');
+  const DESIGN_W = 1672, DESIGN_H = 941;
+
+  function resize(){
+    const w = wrap.clientWidth;
+    const scale = w / DESIGN_W;
+    frame.style.width = DESIGN_W + 'px';
+    frame.style.height = DESIGN_H + 'px';
+    frame.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = (DESIGN_H * scale) + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
 
 <!-- SEÇÃO 11 — INSTRUMENTOS SALA SÃO PAULO -->
 <section class="stage-section alt" id="instrumentos">
@@ -317,6 +434,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-<script src="script1.js"></script>
+<script src="assets/js/script1.js"></script>
 </body>
 </html>
