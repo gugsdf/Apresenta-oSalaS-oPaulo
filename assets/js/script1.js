@@ -717,28 +717,28 @@ const familySectionModals = {
   cordas: {
     tag: 'Cordas',
     title: 'Família das Cordas',
-    description: 'As cordas produzem som pela vibração de um fio tensionado. O comprimento, a tensão e a espessura definem o timbre e a altura da nota.',
+    description: 'As cordas produzem som pela vibração de um fio tensionado. O comprimento, a tensão e a espessura definem o timbre e a altura da nota. *Spalla - Vozes*',
     primaryImage: 'assets/images/Cordas.png',
     secondaryImages: []
   },
   metais: {
     tag: 'Metais',
     title: 'Família dos Metais',
-    description: 'Nos metais, o ar vibra dentro de um tubo e o som ganha brilho, potência e projeção em diferentes alturas.',
+    description: 'Nos metais, o ar vibra dentro de um tubo e o som ganha brilho, potência e projeção em diferentes alturas. *Material - Variedade*',
     primaryImage: 'assets/images/Metais.png',
     secondaryImages: []
   },
   madeiras: {
     tag: 'Madeiras',
     title: 'Família das Madeiras',
-    description: 'As madeiras usam diferentes maneiras de iniciar a vibração do ar: embocadura livre, palheta simples ou dupla.',
+    description: 'As madeiras usam diferentes maneiras de iniciar a vibração do ar: embocadura livre, palheta simples ou dupla. *Ligação Cordas e Metais - 440Hz*',
     primaryImage: 'assets/images/Madeiras1.png',
     secondaryImages: ['assets/images/Madeiras2.png', 'assets/images/Madeiras3.png']
   },
   percussao: {
     tag: 'Percussão',
     title: 'Família da Percussão',
-    description: 'A percussão cria ritmo e textura. Alguns instrumentos têm altura definida, enquanto outros marcam o pulso com impacto e ressonância.',
+    description: 'A percussão cria ritmo e textura. Alguns instrumentos têm altura definida, enquanto outros marcam o pulso com impacto e ressonância. *Poder sonoro - Ecléticos*',
     primaryImage: 'assets/images/Percussao.png',
     secondaryImages: []
   }
