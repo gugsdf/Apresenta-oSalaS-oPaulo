@@ -535,11 +535,12 @@ document.getElementById('btnExplorar').addEventListener('click', ()=>{
 
 /* ---------- STAGE SVG (palco + instrumentos) ---------- */
 const zones = [
-  {id:'percussao', label:'Percussão', cx:450, cy:95,  rx:360, ry:65, color:'rgba(193,88,79,0.16)'},
-  {id:'metais',    label:'Metais',    cx:450, cy:215, rx:290, ry:80, color:'rgba(201,160,78,0.18)'},
-  {id:'madeiras',  label:'Madeiras',  cx:450, cy:335, rx:250, ry:75, color:'rgba(63,145,134,0.16)'},
-  {id:'cordas',    label:'Cordas',    cx:450, cy:465, rx:330, ry:110,color:'rgba(159,122,220,0.16)'},
-  {id:'maestro',   label:'Maestro',   cx:450, cy:565, rx:55,  ry:35, color:'rgba(242,234,217,0.16)'}
+  // Aumentei levemente os elipses do palco e intensifiquei a opacidade das cores
+  {id:'percussao', label:'Percussão', cx:450, cy:95,  rx:470, ry:85, color:'rgba(193,88,79,0.32)'},
+  {id:'metais',    label:'Metais',    cx:450, cy:215, rx:380, ry:104, color:'rgba(201,160,78,0.36)'},
+  {id:'madeiras',  label:'Madeiras',  cx:450, cy:335, rx:325, ry:98, color:'rgba(63,145,134,0.32)'},
+  {id:'cordas',    label:'Cordas',    cx:450, cy:465, rx:430, ry:143,color:'rgba(159,122,220,0.32)'},
+  {id:'maestro',   label:'Maestro',   cx:450, cy:565, rx:75,  ry:46, color:'rgba(242,234,217,0.32)'}
 ];
 
 function setStageHint(text){
@@ -585,11 +586,14 @@ function buildStageSvg(svgEl, clickable){
     svgEl.appendChild(g);
   });
 }
-buildStageSvg(document.getElementById('stageSvg'), true);
-document.getElementById('stageSvg').addEventListener('click', (e)=>{
-  const hint = document.getElementById('stageHint');
-  hint.textContent = 'Explore os outros naipes clicando no palco';
-});
+const stageSvg = document.getElementById('stageSvg');
+if(stageSvg){
+  buildStageSvg(stageSvg, true);
+  stageSvg.addEventListener('click', ()=>{
+    const hint = document.getElementById('stageHint');
+    if(hint) hint.textContent = 'Explore os outros naipes clicando no palco';
+  });
+}
 
 /* Posições seguem a disposição real da Sala São Paulo:
    1ª fileira (mais perto do maestro) — Cordas: 1os violinos (esquerda da plateia) → 2os violinos → violas (centro) → violoncelos → contrabaixos (canto direito, atrás dos violoncelos) → harpa (atrás dos violoncelos/contrabaixos)
@@ -597,31 +601,36 @@ document.getElementById('stageSvg').addEventListener('click', (e)=>{
    3ª fileira — Metais: trompas (mais próximas das madeiras), trompetes, trombones, tuba (mais ao fundo)
    4ª fileira (mais ao fundo) — Percussão: tímpanos, piano (quando a obra exige), caixa, pratos, bombo */
 const instrumentPositions = [
-  // Percussão (fundo do palco)
-  {id:'timpanos', x:170, y:100},{id:'caixa', x:330, y:82},{id:'piano', x:450, y:110},{id:'pratos', x:570, y:82},{id:'bombo', x:730, y:100},
-  // Metais
-  {id:'trompa', x:250, y:245},{id:'trompete', x:400, y:200},{id:'trombone', x:540, y:200},{id:'tuba', x:670, y:180},
-  // Madeiras
-  {id:'flauta', x:340, y:340},{id:'clarinete', x:450, y:328},{id:'fagote', x:570, y:340},
-  // Cordas — 1ª fileira, esquerda (plateia) → direita
-  {id:'violino', x:170, y:500, label:'1ºs Violinos'},
-  {id:'violino', x:300, y:475, label:'2ºs Violinos'},
-  {id:'viola', x:450, y:465},
-  {id:'violoncelo', x:600, y:475},
-  {id:'contrabaixo', x:720, y:440},
-  {id:'harpa', x:700, y:395}
+  // 1ª fileira — Cordas (mais próximas do maestro)
+  {id:'violino', x:100, y:125, label:'1ºs Violinos'},
+  {id:'violino', x:235, y:125, label:'2ºs Violinos'},
+  {id:'viola', x:370, y:125},
+  {id:'violoncelo', x:505, y:125},
+  {id:'contrabaixo', x:650, y:125},
+  {id:'harpa', x:800, y:125},
+  // 2ª fileira — Madeiras
+  {id:'flautim', x:250, y:275},{id:'flauta', x:390, y:275},{id:'clarinete', x:530, y:275},{id:'fagote', x:670, y:275},
+  // 3ª fileira — Metais
+  {id:'trompa', x:160, y:420},{id:'trompete', x:350, y:420},{id:'trombone', x:545, y:420},{id:'tuba', x:740, y:420},
+  // Última fileira — Percussão (fundo do palco)
+  {id:'timpanos', x:130, y:555},{id:'piano', x:310, y:555},{id:'pratos', x:490, y:555},{id:'caixa', x:650, y:555},{id:'bombo', x:810, y:555}
 ];
 
 function buildInstrumentsSvg(){
   const svg = document.getElementById('instrumentsSvg');
   svg.innerHTML = '';
   const ns='http://www.w3.org/2000/svg';
-  // faint zone backgrounds (non-clickable, for context)
-  zones.filter(z=>z.id!=='maestro').forEach(z=>{
+  // Faixas do mapa na mesma ordem da explicação: cordas → madeiras → metais → percussão
+  [
+    {cx:450,cy:105,rx:405,ry:92,color:'rgba(159,122,220,0.06)'},
+    {cx:450,cy:275,rx:330,ry:82,color:'rgba(63,145,134,0.06)'},
+    {cx:450,cy:420,rx:365,ry:62,color:'rgba(201,160,78,0.06)'},
+    {cx:450,cy:555,rx:425,ry:62,color:'rgba(193,88,79,0.06)'}
+  ].forEach(z=>{
     const el = document.createElementNS(ns,'ellipse');
     el.setAttribute('cx', z.cx); el.setAttribute('cy', z.cy);
     el.setAttribute('rx', z.rx); el.setAttribute('ry', z.ry);
-    el.setAttribute('fill', z.color.replace(/[\d.]+\)$/, '0.06)'));
+    el.setAttribute('fill', z.color);
     el.setAttribute('stroke','none');
     svg.appendChild(el);
   });
@@ -642,8 +651,8 @@ function buildInstrumentsSvg(){
     // Usar SVG icon se disponível, senão emoji
     if(instrumentIcons[p.id]) {
       const iconGroup = document.createElementNS(ns,'foreignObject');
-      iconGroup.setAttribute('x', p.x - 12); iconGroup.setAttribute('y', p.y - 26);
-      iconGroup.setAttribute('width', 24); iconGroup.setAttribute('height', 24);
+      iconGroup.setAttribute('x', p.x - 24); iconGroup.setAttribute('y', p.y - 48);
+      iconGroup.setAttribute('width', 48); iconGroup.setAttribute('height', 48);
       const div = document.createElement('div');
       div.setAttribute('xmlns','http://www.w3.org/1999/xhtml');
       div.className = 'inst-icon-mini';
@@ -670,8 +679,27 @@ const modalBackdrop = document.getElementById('modalBackdrop');
 const modalBody = document.getElementById('modalBody');
 document.getElementById('modalClose').addEventListener('click', closeModal);
 modalBackdrop.addEventListener('click', (e)=>{ if(e.target === modalBackdrop) closeModal(); });
-function openModal(html){ modalBody.innerHTML = html; modalBackdrop.classList.add('open'); document.body.classList.add('modal-open'); }
-function closeModal(){ modalBackdrop.classList.remove('open'); document.body.classList.remove('modal-open'); }
+function openModal(html){
+  modalBody.innerHTML = html;
+  modalBackdrop.classList.add('open');
+  document.body.classList.add('modal-open');
+  showModalZoomTip();
+}
+function closeModal(){
+  modalBackdrop.classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
+
+function showModalZoomTip(){
+  const existingTip = document.querySelector('.modal-zoom-tip');
+  if(existingTip){ existingTip.remove(); }
+  const tip = document.createElement('div');
+  tip.className = 'modal-zoom-tip';
+  tip.textContent = 'Modo leitura ativado — zoom máximo';
+  document.getElementById('modalPanel').appendChild(tip);
+  setTimeout(()=>{ tip.classList.add('hide'); }, 1300);
+  setTimeout(()=>{ tip.remove(); }, 1600);
+}
 document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeModal(); });
 
 const familyInfo = {
@@ -684,6 +712,73 @@ function openFamilyModal(id){
   const f = familyInfo[id];
   openModal(`<h3>${f.title}</h3><p>${f.text}</p><ul>${f.items.map(i=>`<li>${i}</li>`).join('')}</ul>`);
 }
+
+const familySectionModals = {
+  cordas: {
+    tag: 'Cordas',
+    title: 'Família das Cordas',
+    description: 'As cordas produzem som pela vibração de um fio tensionado. O comprimento, a tensão e a espessura definem o timbre e a altura da nota.',
+    primaryImage: 'assets/images/Cordas.png',
+    secondaryImages: []
+  },
+  metais: {
+    tag: 'Metais',
+    title: 'Família dos Metais',
+    description: 'Nos metais, o ar vibra dentro de um tubo e o som ganha brilho, potência e projeção em diferentes alturas.',
+    primaryImage: 'assets/images/Metais.png',
+    secondaryImages: []
+  },
+  madeiras: {
+    tag: 'Madeiras',
+    title: 'Família das Madeiras',
+    description: 'As madeiras usam diferentes maneiras de iniciar a vibração do ar: embocadura livre, palheta simples ou dupla.',
+    primaryImage: 'assets/images/Madeiras1.png',
+    secondaryImages: ['assets/images/Madeiras2.png', 'assets/images/Madeiras3.png']
+  },
+  percussao: {
+    tag: 'Percussão',
+    title: 'Família da Percussão',
+    description: 'A percussão cria ritmo e textura. Alguns instrumentos têm altura definida, enquanto outros marcam o pulso com impacto e ressonância.',
+    primaryImage: 'assets/images/Percussao.png',
+    secondaryImages: []
+  }
+};
+
+function openFamilySectionModal(key){
+  const config = familySectionModals[key];
+  if(!config) return;
+
+  const galleryMarkup = config.secondaryImages.length > 0
+    ? `
+      <div class="family-modal-gallery">
+        <img class="family-modal-image family-modal-image--primary" src="${config.primaryImage}" alt="${config.title}">
+        <div class="family-modal-grid">
+          ${config.secondaryImages.map(src => `<img class="family-modal-image family-modal-image--small" src="${src}" alt="${config.title}">`).join('')}
+        </div>
+      </div>
+    `
+    : `
+      <div class="family-modal-gallery family-modal-gallery--single">
+        <img class="family-modal-image family-modal-image--primary" src="${config.primaryImage}" alt="${config.title}">
+      </div>
+    `;
+
+  openModal(`
+    <div class="family-modal-shell">
+      <span class="m-tag">${config.tag}</span>
+      <h3>${config.title}</h3>
+      <p>${config.description}</p>
+      ${galleryMarkup}
+      <div class="m-actions">
+        <button class="btn-solid" id="familyModalCloseBtn">Entendi</button>
+      </div>
+    </div>
+  `);
+
+  const closeBtn = document.getElementById('familyModalCloseBtn');
+  if(closeBtn) closeBtn.addEventListener('click', closeModal);
+}
+
 function openMaestroModal(){
   openModal(`<h3>O Maestro</h3><p>Posicionado de frente para toda a orquestra, o maestro não produz som — ele sincroniza tempo, dinâmica e entradas de cada naipe para que dezenas de instrumentos soem como um só.</p>`);
 }
@@ -697,7 +792,6 @@ function openInstrumentModal(id){
     <span class="m-tag">${inst.familia}</span>
     <h3>${inst.nome}</h3>
     ${iconHtml}
-    <img src="${inst.imagem}" alt="${inst.nome}">
     <p>${inst.desc}</p>
     <ul>${inst.curiosidades.map(c=>`<li>${c}</li>`).join('')}</ul>
     <p style="font-family:var(--font-mono);color:var(--gold);font-size:0.8rem;">${inst.faixa}</p>
@@ -705,6 +799,19 @@ function openInstrumentModal(id){
   `);
   document.getElementById('modalPlayBtn').addEventListener('click', ()=> tone(inst.freq, 0.9, 'triangle', 0.4));
 }
+
+// Botões de "Ver mais" das famílias da seção Edu
+const familyModalButtons = [
+  ['btnabrirModalCorda', 'cordas'],
+  ['btnabrirModalTrompete', 'metais'],
+  ['btnabrirModalMadeiras', 'madeiras'],
+  ['btnabrirModalPercussao', 'percussao']
+];
+
+familyModalButtons.forEach(([id, key]) => {
+  const btn = document.getElementById(id);
+  if(btn) btn.addEventListener('click', ()=> openFamilySectionModal(key));
+});
 
 /* ---------- CORDAS: string lab ---------- */
 (function stringLab(){
