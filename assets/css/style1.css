@@ -18,6 +18,9 @@
   --font-body:'Manrope', sans-serif;
   --font-mono:'JetBrains Mono', monospace;
   --radius:14px;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
