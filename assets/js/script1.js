@@ -786,7 +786,7 @@ function openInstrumentModal(id){
   const inst = instrumentos[id];
   if(!inst) return;
   const iconHtml = instrumentIcons[id] 
-    ? `<div class="modal-icon-svg">${instrumentIcons[id]}</div>`
+    ? `<div class="modal-icon-svg instrument-modal-icon" style="width:180px;height:180px;margin:0.7rem auto 1.2rem;">${instrumentIcons[id]}</div>`
     : '';
   openModal(`
     <span class="m-tag">${inst.familia}</span>
